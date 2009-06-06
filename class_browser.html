@@ -3,9 +3,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Joose Class Browser</title>
 
+<script src="lib/CodeMirror/js/codemirror.js" type="text/javascript"></script>
 <script type="text/javascript" src="lib/Task/Joose/core.js"></script>
-<script type="text/javascript" src="http://github.com/SamuraiJack/JooseX-Attribute/raw/67ef745399b4231e07afac04e066e2d6a8afdc7d/lib/JooseX/Attribute/Lazy.js"></script>
-<script type="text/javascript" src="http://github.com/SamuraiJack/JooseX-Attribute/raw/67ef745399b4231e07afac04e066e2d6a8afdc7d/lib/JooseX/Attribute/Trigger.js"></script>
+<script type="text/javascript" src="lib/JooseX/Attribute/Lazy.js"></script>
+<script type="text/javascript" src="lib/JooseX/Attribute/Trigger.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/ClassBrowser.js"></script>
 <script type="text/javascript">
 
@@ -50,10 +51,7 @@ Module("com.test.me", function () {
 })
 
 </script>
-
-<script type="text/javascript" src="../tests/json2.js"></script>
 <link href="test.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../lib/JooseX/IDE/ClassBrowser.js"></script>
 
   <style type="text/css">
   #JooseCB {
@@ -95,6 +93,13 @@ Module("com.test.me", function () {
       <td><select id="JooseCBElementsSelect" size=10    onchange="cb.selectedElement(this)"></select>
     </tr>
     <tr>
+      <td id="JooseCBTitle" colspan="2"></td>
+      <td id="JooseCBBodyActions"  colspan="2">
+          <button id="JooseCBSaveAction" onclick="cb.saveBody()">Save</button>
+          <button id="JooseCBDiscardAction" onclick="cb.discardBody()">Cancel</button>
+      </td>
+    </tr>
+    <tr>
       <td id="JooseCBBody" colspan="4"></td>
     </tr>
   </table>
@@ -102,7 +107,20 @@ Module("com.test.me", function () {
 
 
 <script type="text/javascript">
-window.cb = new JooseX.IDE.ClassBrowser()
+window.cb = new JooseX.IDE.ClassBrowser();
+
+window.document.bodyEditor = new CodeMirror($("JooseCBBody"), {
+    parserfile: ["tokenizejavascript.js", "parsejavascript.js"],  
+    path: "lib/CodeMirror/js/",
+    stylesheet: "lib/CodeMirror/css/jscolors.css",
+    height: "35em"});
+
+window.document.titleEditor = new CodeMirror($("JooseCBTitle"), {
+    parserfile: ["tokenizejavascript.js", "parsejavascript.js"],  
+    path: "lib/CodeMirror/js/",
+    stylesheet: "lib/CodeMirror/css/jscolors.css",
+    height: "2em"});
+
 </script>
 
 </body>
