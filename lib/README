@@ -3,6 +3,7 @@ JooseX/Attribute/Lazy 2009-05-14 (http://github.com/SamuraiJack/JooseX-Attribute
 JooseX/Attribute/Trigger 2009-05-14 (http://github.com/SamuraiJack/JooseX-Attribute/)
 CodeMirror 0.62 (http://marijn.haverbeke.nl/codemirror/)
 Test.Run 2009-06-07 (git://github.com/SamuraiJack/test.run.git)
-jQuery 1.3.2 release (http://jqueryjs.googlecode.com/files/jquery-1.3.2.js)
+jQuery 1.4.3 release (http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.js)
+jquery.hotkeys (github master (2010/10/17)
 QUnit (github master 2010/10/08)
 Syn (syn site 2010/10/07)
