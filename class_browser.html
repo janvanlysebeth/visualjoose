@@ -31,9 +31,9 @@
 <link href="lib/qunit/qunit.css" rel="stylesheet" type="text/css" />
 
 <!-- tests -->
-<script type="text/javascript" src="lib/JooseX/IDE/framework/test/TestCase.js"></script>
-<script type="text/javascript" src="lib/JooseX/IDE//test/TestTestCase.js"></script>
-<script type="text/javascript" src="lib/JooseX/IDE//test/Doer.js"></script>
+<script type="text/javascript" src="lib/JooseX/IDE/framework/test/QUnitTestCase.js"></script>
+<script type="text/javascript" src="lib/JooseX/IDE/test/TestTestCase.js"></script>
+<script type="text/javascript" src="lib/JooseX/IDE/test/Doer.js"></script>
 
 
 
@@ -43,10 +43,10 @@ $(document).ready(function() {
     /* removing this timeout result in an error when codemirror tries to access 
     the contentWindow property ot the inserted iframe. This didn't happen with
     jquery 1.3.2, but when I upgraded to 1.4.3 this error turned up. */
-//    setTimeout(function() {
+    setTimeout(function() {
             JooseX.IDE.CBClassBrowser.my.open(window);
             //$(document).bind('keydown', 'f9', function() {alert("f2 pressed")});
-//    }, 10);    
+    }, 10);    
 }); 
 
 </script>
