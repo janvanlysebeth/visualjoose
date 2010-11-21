@@ -1,0 +1,25 @@
+#JooseCB {
+	font-family: Arial;
+}
+#JooseCB th {
+	text-align: left;
+	width: 25%;
+	color: #fff;
+	background-color: #0d3349;
+}
+
+table a:link, table a:visited, table a:active, table a:hover {
+	text-decoration: none;
+	color: #fff;
+}
+
+#JooseCB select {
+	min-width: 100%
+}
+
+#JooseCB td {
+	background-color: #D2E0E6;
+}
+#JooseCBContainerTable {
+	width: 100%;
+}

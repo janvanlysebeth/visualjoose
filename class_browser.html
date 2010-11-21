@@ -16,12 +16,16 @@
 
 <!-- Joose IDE -->
 <script type="text/javascript" src="lib/JooseX/IDE/framework/ApplicationModel.js"></script>
+<script type="text/javascript" src="lib/JooseX/IDE/VisualJooseLauncher.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/CBAttributeCodeModel.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/CBClassOrRoleCodeModel.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/CBMethodCodeModel.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/CBNamespaceCodeModel.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/CBBrowserEditor.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/CBClassBrowser.js"></script>
+<script type="text/javascript" src="lib/JooseX/IDE/ChangeLogTool.js"></script>
+
+<script type="text/javascript" src="lib/JooseX/IDE/CodeChanges.js"></script>
 
 <!-- Syn a testing library -->
 <script type="text/javascript" src="lib/syn/syn.js"></script>
@@ -44,40 +48,14 @@ $(document).ready(function() {
     the contentWindow property ot the inserted iframe. This didn't happen with
     jquery 1.3.2, but when I upgraded to 1.4.3 this error turned up. */
     setTimeout(function() {
-            JooseX.IDE.CBClassBrowser.my.open(window);
+            launcher = new JooseX.IDE.VisualJooseLauncher(window);
             //$(document).bind('keydown', 'f9', function() {alert("f2 pressed")});
     }, 10);    
 }); 
 
 </script>
 
-  <style type="text/css">
-  #JooseCB {
-  	font-family: Arial;
-  }
-  #JooseCB th {
-  	text-align: left;
-  	width: 25%;
-  	color: #fff;
-  	background-color: #0d3349;
-  }
-  
-  #JooseCB select {
-  	min-width: 100%
-  }
-  
-  #JooseCB td {
-  	background-color: #D2E0E6;
-  }
-  #JooseCBContainerTable {
-  	width: 100%;
-  }
-  
-  #qunitPanel {
-  	width: 100%;
-  	display: none;
-  }
-  </style>
+<link rel="stylesheet" type="text/css" href="visualjoose.css"/>
 
 </head>
 
@@ -85,23 +63,28 @@ $(document).ready(function() {
 <div id="JooseCB">
   <table id="JooseCBContainerTable" cellpadding=5 cellspacing=1>
     <tr>
+      <th colspan="4">
+        <a id="openChangeLog" href="./change_list.html"><img alt="changelist" src="./lib/icons/memory.png"/>Changelog</a>
+      </th>
+    </tr>
+    <tr>
       <th>Modules</th>
       <th>Classes and Roles</th>
       <th>Categories</th>
       <th>Elements</th>
     </tr>
     <tr>
-      <td><select id="JooseCBModulesSelect" size=10     onchange="cb.selectedModule(this)"></select>
-      <td><select id="JooseCBClassesSelect" size=10     onchange="cb.selectedClass(this)"></select>
-      <td><select id="JooseCBCategoriesSelect" size=10  onchange="cb.selectedCategory(this)"></select>
-      <td><select id="JooseCBElementsSelect" size=10    onchange="cb.selectedElement(this)"></select>
+      <td><select id="JooseCBModulesSelect" size='10'></select></td>
+      <td><select id="JooseCBClassesSelect" size='10'></select></td>
+      <td><select id="JooseCBCategoriesSelect" size='10'></select></td>
+      <td><select id="JooseCBElementsSelect" size='10'></select></td>
     </tr>
     <tr>
       <td id="JooseCBTitle" colspan="2"></td>
       <td id="JooseCBBodyActions"  colspan="2">
-          <button id="JooseCBSaveAction" onclick="cb.getEditor().saveBody()">Save</button>
-          <button id="JooseCBDiscardAction" onclick="cb.getEditor().discardBody()">Cancel</button>
-          <button id="JooseCBDeleteAction" onclick="cb.getEditor().deleteBody()">Delete</button>
+          <button id="JooseCBSaveAction">Save</button>
+          <button id="JooseCBDiscardAction">Cancel</button>
+          <button id="JooseCBDeleteAction">Delete</button>
       </td>
     </tr>
     <tr>
@@ -109,12 +92,5 @@ $(document).ready(function() {
     </tr>
   </table>
 </div>
-<div id="qunitPanel">
-    <h1 id="qunit-header">QUnit results</h1>
-    <h2 id="qunit-banner"></h2>
-    <h2 id="qunit-userAgent"></h2>
-    <ol id="qunit-tests"></ol>
-</div>
-
 </body>
 </html>
