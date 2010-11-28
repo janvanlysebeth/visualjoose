@@ -15,6 +15,7 @@
 
 
 <!-- Joose IDE -->
+<script type="text/javascript" src="lib/JooseX/IDE/CodeChanges.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/framework/ApplicationModel.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/VisualJooseLauncher.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/CBAttributeCodeModel.js"></script>
@@ -24,8 +25,6 @@
 <script type="text/javascript" src="lib/JooseX/IDE/CBBrowserEditor.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/CBClassBrowser.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/ChangeLogTool.js"></script>
-
-<script type="text/javascript" src="lib/JooseX/IDE/CodeChanges.js"></script>
 
 <!-- Syn a testing library -->
 <script type="text/javascript" src="lib/syn/syn.js"></script>
@@ -48,7 +47,7 @@ $(document).ready(function() {
     the contentWindow property ot the inserted iframe. This didn't happen with
     jquery 1.3.2, but when I upgraded to 1.4.3 this error turned up. */
     setTimeout(function() {
-            launcher = new JooseX.IDE.VisualJooseLauncher(window);
+            VJ = new JooseX.IDE.VJ.start();
             //$(document).bind('keydown', 'f9', function() {alert("f2 pressed")});
     }, 10);    
 }); 
