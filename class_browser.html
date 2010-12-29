@@ -30,9 +30,6 @@
 <script type="text/javascript" src="lib/JooseX/IDE/CBClassBrowser.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/ChangeLogTool.js"></script>
 
-<!-- Syn a testing library -->
-<script type="text/javascript" src="lib/syn/syn.js"></script>
-
 <!-- node assertions -->
 <script type="text/javascript" src="lib/node/assert.js"></script>
 
@@ -77,7 +74,13 @@ $(document).ready(function() {
       <th>Modules</th>
       <th>Classes and Roles</th>
       <th>Categories</th>
-      <th>Elements</th>
+      <th>Elements
+        <span class="alignRight">
+            <button id="addElementAnchor" class="imageButton"><img alt="Add" src="./lib/icons/plus-circle.png"/></button>
+            <!--<button id="searchElementAnchor" class="imageButton"><img alt="Search" src="./lib/icons/binocular.png"/></button>
+            <button id="deleteElementAnchor" class="imageButton"><img alt="Delete" src="./lib/icons/minus-circle.png"/></button>-->
+        </span>
+      </th>
     </tr>
     <tr>
       <td><select id="JooseCBModulesSelect" size='10'></select></td>

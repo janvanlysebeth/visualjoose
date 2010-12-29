@@ -31,3 +31,26 @@ table a:link, table a:visited, table a:active, table a:hover {
 #JooseCBContainerTable {
 	width: 100%;
 }
+
+span.alignRight {
+	float: right;
+}
+
+button.imageButton {
+	background: none;
+	border: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+button.imageButton:enabled {
+	cursor: pointer;
+}
+
+button.imageButton:disabled {
+	cursor: not-allowed;
+}
+
+button.imageButton img{
+	border: none;
+}
