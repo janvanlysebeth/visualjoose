@@ -6,9 +6,11 @@
 <script src="lib/CodeMirror/js/codemirror.js" type="text/javascript"></script>
 
 <!-- JQuery -->
-<!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.js" type="text/javascript"></script-->
 <script src="lib/jQuery/jquery-1.4.3.js" type="text/javascript"></script>
 <script src="lib/jQuery/jquery.hotkeys.js" type="text/javascript"></script>
+
+<!-- Knockout -->
+<script src="lib/knockout/knockout-1.1.1.debug.js" type="text/javascript"></script>
 
 <!-- Joose -->
 <script type="text/javascript" src="lib/Joose/Core.js"></script>
@@ -29,6 +31,7 @@
 <script type="text/javascript" src="lib/JooseX/IDE/CBBrowserEditor.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/CBClassBrowser.js"></script>
 <script type="text/javascript" src="lib/JooseX/IDE/ChangeLogTool.js"></script>
+
 
 <!-- node assertions -->
 <script type="text/javascript" src="lib/node/assert.js"></script>
@@ -76,24 +79,40 @@ $(document).ready(function() {
       <th>Categories</th>
       <th>Elements
         <span class="alignRight">
-            <button id="addElementAnchor" class="imageButton"><img alt="Add" src="./lib/icons/plus-circle.png"/></button>
+            <button id="addElementAnchor" class="imageButton"
+                    data-bind="click: doAddElement,
+                                enable: selectedCategory() != null"><img alt="Add" src="./lib/icons/plus-circle.png"/></button>
             <!--<button id="searchElementAnchor" class="imageButton"><img alt="Search" src="./lib/icons/binocular.png"/></button>
             <button id="deleteElementAnchor" class="imageButton"><img alt="Delete" src="./lib/icons/minus-circle.png"/></button>-->
         </span>
       </th>
     </tr>
     <tr>
-      <td><select id="JooseCBModulesSelect" size='10'></select></td>
-      <td><select id="JooseCBClassesSelect" size='10'></select></td>
-      <td><select id="JooseCBCategoriesSelect" size='10'></select></td>
-      <td><select id="JooseCBElementsSelect" size='10'></select></td>
+      <td><select id="JooseCBModulesSelect" size='10'
+            data-bind="value: selectedModule,
+                        options: modules,
+                        optionsText: function(i) {return i.meta.qualifiedName()}"></select></td>
+      <td><select id="JooseCBClassesSelect" size='10'
+            data-bind="value: selectedClass,
+                        options: classes,
+                        optionsText: function(i) {return i.meta.localName()}"></select></td>
+      <td><select id="JooseCBCategoriesSelect" size='10'
+            data-bind="value: selectedCategory,
+                        options: categories"></select></td>
+      <td><select id="JooseCBElementsSelect" size='10'
+            data-bind="value: selectedElement,
+                        options: elements,
+                        optionsText: 'name'"></select></td>
     </tr>
     <tr>
       <td id="JooseCBTitle" colspan="2"></td>
       <td id="JooseCBBodyActions"  colspan="2">
-          <button id="JooseCBSaveAction">Save</button>
-          <button id="JooseCBDiscardAction">Cancel</button>
-          <button id="JooseCBDeleteAction">Delete</button>
+          <button id="JooseCBSaveAction"
+                    data-bind="click: doSaveBody">Save</button>
+          <button id="JooseCBDiscardAction"
+                    data-bind="click: doDiscardBody">Cancel</button>
+          <button id="JooseCBDeleteAction"
+                    data-bind="click: doDeleteBody">Delete</button>
       </td>
     </tr>
     <tr>
