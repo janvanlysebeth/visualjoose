@@ -8,23 +8,50 @@
 <div id="JooseCB">
   <table id="JooseCBContainerTable" cellpadding=5 cellspacing=1>
     <tr>
+      <th colspan="4">
+        <a id="openChangeLog" href="./change_list.html"><img alt="changelist" src="./lib/icons/memory.png"/>Changelog</a>
+      </th>
+    </tr>
+    <tr>
       <th>Modules</th>
       <th>Classes and Roles</th>
       <th>Categories</th>
-      <th>Elements</th>
+      <th>Elements
+        <span class="alignRight">
+            <button id="addElementAnchor" class="imageButton"
+                    data-bind="click: doAddElement,
+                                enable: selectedCategory() != null"><img alt="Add" src="./lib/icons/plus-circle.png"/></button>
+            <!--<button id="searchElementAnchor" class="imageButton"><img alt="Search" src="./lib/icons/binocular.png"/></button>
+            <button id="deleteElementAnchor" class="imageButton"><img alt="Delete" src="./lib/icons/minus-circle.png"/></button>-->
+        </span>
+      </th>
     </tr>
     <tr>
-      <td><select id="JooseCBModulesSelect" size='10'></select></td>
-      <td><select id="JooseCBClassesSelect" size='10'></select></td>
-      <td><select id="JooseCBCategoriesSelect" size='10'></select></td>
-      <td><select id="JooseCBElementsSelect" size='10'></select></td>
+      <td><select id="JooseCBModulesSelect" size='10'
+            data-bind="value: selectedModule,
+                        options: modules,
+                        optionsText: function(i) {return i.meta.qualifiedName()}"></select></td>
+      <td><select id="JooseCBClassesSelect" size='10'
+            data-bind="value: selectedClass,
+                        options: classes,
+                        optionsText: function(i) {return i.meta.localName()}"></select></td>
+      <td><select id="JooseCBCategoriesSelect" size='10'
+            data-bind="value: selectedCategory,
+                        options: categories"></select></td>
+      <td><select id="JooseCBElementsSelect" size='10'
+            data-bind="value: selectedElement,
+                        options: elements,
+                        optionsText: 'name'"></select></td>
     </tr>
     <tr>
       <td id="JooseCBTitle" colspan="2"></td>
       <td id="JooseCBBodyActions"  colspan="2">
-          <button id="JooseCBSaveAction">Save</button>
-          <button id="JooseCBDiscardAction">Cancel</button>
-          <button id="JooseCBDeleteAction">Delete</button>
+          <button id="JooseCBSaveAction"
+                    data-bind="click: doSaveBody">Save</button>
+          <button id="JooseCBDiscardAction"
+                    data-bind="click: doDiscardBody">Cancel</button>
+          <button id="JooseCBDeleteAction"
+                    data-bind="click: doDeleteBody">Delete</button>
       </td>
     </tr>
     <tr>
@@ -32,6 +59,5 @@
     </tr>
   </table>
 </div>
-
 </body>
 </html>
